@@ -4,9 +4,9 @@ name: Gemini CLI CI
 
 on:
   push:
-    branches: [main, release]
+    branches: [main, release, beautify_chat_list_dispaly]
   pull_request:
-    branches: [main, release]
+    branches: [main, release, beautify_chat_list_dispaly]
   merge_group:
 
 jobs:
