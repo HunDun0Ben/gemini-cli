@@ -203,9 +203,11 @@ const resumeCommand: SlashCommand = {
       }
     }
   },
-  completion: async (context) => {
+  completion: async (context, partialArg) => {
     const chatDetails = await getSavedChatTags(context, true);
-    return chatDetails.map((chat) => chat.name);
+    return chatDetails
+      .map((chat) => chat.name)
+      .filter((name) => name.startsWith(partialArg));
   },
 };
 
