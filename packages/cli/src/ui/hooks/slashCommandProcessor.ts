@@ -198,23 +198,6 @@ export const useSlashCommandProcessor = (
     load();
   }, [commandService]);
 
-  const savedChatTags = useCallback(async () => {
-    const geminiDir = config?.getProjectTempDir();
-    if (!geminiDir) {
-      return [];
-    }
-    try {
-      const files = await fs.readdir(geminiDir);
-      return files
-        .filter(
-          (file) => file.startsWith('checkpoint-') && file.endsWith('.json'),
-        )
-        .map((file) => file.replace('checkpoint-', '').replace('.json', ''));
-    } catch (_err) {
-      return [];
-    }
-  }, [config]);
-
   // Define legacy commands
   // This list contains all commands that have NOT YET been migrated to the
   // new system. As commands are migrated, they are removed from this list.
@@ -904,7 +887,6 @@ export const useSlashCommandProcessor = (
     openEditorDialog,
     openPrivacyNotice,
     toggleCorgiMode,
-    savedChatTags,
     config,
     settings,
     showToolDescriptions,
